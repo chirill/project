@@ -33,8 +33,8 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role');
     }
 
-    public function setPasswordAttribute('password'){
-
-
-    }
+//    public function setPasswordAttribute('password'){
+//
+//
+//    }
 }
