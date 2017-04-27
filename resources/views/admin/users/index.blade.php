@@ -20,8 +20,11 @@
     <tbody>
     @if($users)
         @foreach($users as $user)
+            @php
+            $count++;
+            @endphp
         <tr>
-            <td>nr</td>
+            <td>{{$count}}</td>
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
             <td>{{$user->company->name}}</td>

@@ -8,16 +8,23 @@
                 <th>Nr</th>
                 <th>Location</th>
                 <th>Company</th>
+                <th>Users in Location</th>
             </tr>
         </thead>
         <tbody>
         @if($locations)
             @foreach($locations as $location)
+            @php $count++; $persoane = 0; @endphp
+            @foreach($location->users as $user)
+                @php $persoane++; @endphp
+            @endforeach
             <tr>
-                <td>nr</td>
+                <td>{{$count}}</td>
                 <td>{{$location->name}}</td>
                 <td>{{$location->company->name}}</td>
+                <td>{{$persoane}}</td>
             </tr>
+
             @endforeach
         @endif
         </tbody>

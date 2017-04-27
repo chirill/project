@@ -12,8 +12,11 @@
         <tbody>
         @if($companies)
             @foreach($companies as $company)
+                @php
+                    $count++;
+                @endphp
             <tr>
-                <td>nr</td>
+                <td>{{$count}}</td>
                 <td>{{$company->name}}</td>
 
             </tr>

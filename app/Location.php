@@ -15,5 +15,8 @@ class Location extends Model
     public function users(){
         return $this->hasMany('App\User');
     }
+    public function printers(){
+        return $this->hasMany('App\Printer');
+    }
 
 }

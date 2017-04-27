@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\Location;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,8 @@ class AdminLocationsController extends Controller
     {
         //
         $locations = Location::all();
-        return view('admin.locations.index',compact('locations'));
+        $count = 0;
+        return view('admin.locations.index',compact('locations','count'));
     }
 
     /**
@@ -29,6 +31,8 @@ class AdminLocationsController extends Controller
     public function create()
     {
         //
+        $companies = Company::lists('name','id')->all();
+        return view('admin.locations.create',compact('companies'));
     }
 
     /**
@@ -40,6 +44,8 @@ class AdminLocationsController extends Controller
     public function store(Request $request)
     {
         //
+        Location::create($request->all());
+        return redirect('/admin/locations');
     }
 
     /**

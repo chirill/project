@@ -8,6 +8,7 @@
                 <tr>
                     <th>nr</th>
                     <th>Role Name</th>
+                    <th>Edit</th>
 
                 </tr>
                 </thead>
@@ -18,6 +19,7 @@
                         <tr>
                             <td>{{$count}}</td>
                             <td>{{$role->name}}</td>
+                            <td><a href="{{route('admin.roles.edit',$role->id)}}">Edit</a></td>
                         </tr>
                     @endforeach
                 @endif

@@ -14,17 +14,15 @@ class AdminCompaniesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function serach(){
-        //
-    }
+
     public function index()
     {
         //
         $companies = Company::all();
+        $count = 0;
 
 
-
-        return view('admin.companies.index',compact('companies'));
+        return view('admin.companies.index',compact('companies','count'));
     }
 
     /**
@@ -35,6 +33,7 @@ class AdminCompaniesController extends Controller
     public function create()
     {
         //
+        return view('admin.companies.create');
     }
 
     /**
@@ -46,6 +45,8 @@ class AdminCompaniesController extends Controller
     public function store(Request $request)
     {
         //
+        Company::create($request->all());
+        return redirect('/admin/companies');
     }
 
     /**

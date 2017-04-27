@@ -27,3 +27,6 @@ Route::resource('/admin/roles','AdminRolesController');
 //Route::get('/broker/admin',['as'=>'broker.home',function(){
 //    return "hi";
 //}]);
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

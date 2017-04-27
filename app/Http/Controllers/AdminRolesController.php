@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -19,6 +20,8 @@ class AdminRolesController extends Controller
         //
         $roles = Role::all();
         $count=0;
+
+
         return view('admin.roles.index',compact('roles','count'));
     }
 
@@ -67,7 +70,7 @@ class AdminRolesController extends Controller
     {
         //
         $role = Role::findOrFail($id);
-        return view('admin.roles.edit','role');
+        return view('admin.roles.edit',compact('role'));
     }
 
     /**
@@ -80,6 +83,9 @@ class AdminRolesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $role = Role::findOrFail($id);
+        $role->update($request->all());
+        return redirect('admin/roles');
     }
 
     /**
@@ -91,5 +97,7 @@ class AdminRolesController extends Controller
     public function destroy($id)
     {
         //
+        Role::findOrFail($id)->delete();
+        return redirect('admin/roles');
     }
 }
