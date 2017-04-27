@@ -14,16 +14,26 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/admin',['as'=>'admin.index',function(){
-    return view('admin.index');
-}]);
-Route::resource('/admin/users','AdminUsersController');
 
-Route::resource('/admin/locations','AdminLocationsController');
+Route::group(['middleware'=>'admin'],function(){
 
-Route::resource('/admin/companies','AdminCompaniesController');
+    Route::get('/admin',['as'=>'admin.index',function(){
+        return view('admin.index');
+    }]);
+    Route::resource('/admin/users','AdminUsersController');
 
-Route::resource('/admin/roles','AdminRolesController');
+    Route::resource('/admin/locations','AdminLocationsController');
+
+    Route::resource('/admin/companies','AdminCompaniesController');
+
+    Route::resource('/admin/roles','AdminRolesController');
+
+
+
+
+
+});
+
 //Route::get('/broker/admin',['as'=>'broker.home',function(){
 //    return "hi";
 //}]);

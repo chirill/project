@@ -13,13 +13,13 @@
             <div class="form-group">
                 {!! Form::submit('Update Role',['class'=>'btn btn-primary']) !!}
             </div>
-
+            {!! Form::close() !!}
         </div>
 
     </div>
     <div class="row">
         <div class="col-sm-4">
-            {!! Form::close() !!}
+
             {!! Form::open(['method'=>'DELETE', 'action'=>['AdminRolesController@destroy',$role->id]]) !!}
 
             <div class="form-group">

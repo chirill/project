@@ -6,6 +6,7 @@
             <tr>
                 <th>Nr.</th>
                 <th>Company Name</th>
+                <th>Edit</th>
 
             </tr>
         </thead>
@@ -17,7 +18,8 @@
                 @endphp
             <tr>
                 <td>{{$count}}</td>
-                <td>{{$company->name}}</td>
+                <td><a href="{{route('admin.companies.show',$company->id)}}">{{$company->name}}</a></td>
+                <td><a href="{{route('admin.companies.edit',$company->id)}}">Edit</a></td>
 
             </tr>
             @endforeach

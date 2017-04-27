@@ -8,6 +8,7 @@
                 <th>Nr</th>
                 <th>Location</th>
                 <th>Company</th>
+                <th>Edit</th>
                 <th>Users in Location</th>
             </tr>
         </thead>
@@ -20,9 +21,10 @@
             @endforeach
             <tr>
                 <td>{{$count}}</td>
-                <td>{{$location->name}}</td>
+                <td><a href="{{route('admin.locations.show',$location->id)}}">{{$location->name}}</a></td>
                 <td>{{$location->company->name}}</td>
                 <td>{{$persoane}}</td>
+                <td><a href="{{route('admin.locations.edit',$location->id)}}">Edit</a></td>
             </tr>
 
             @endforeach

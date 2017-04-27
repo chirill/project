@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\Location;
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -31,6 +33,10 @@ class AdminUsersController extends Controller
     public function create()
     {
         //
+        $roles = Role::lists('name','id')->all();
+        $location = Location::lists('name','id')->all();
+        $company = Company::lists('name','id')->all();
+        return view('admin.users.create',compact('roles','location','company'));
     }
 
     /**

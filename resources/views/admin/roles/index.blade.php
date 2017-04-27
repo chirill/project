@@ -18,7 +18,7 @@
                         <?php $count++;?>
                         <tr>
                             <td>{{$count}}</td>
-                            <td>{{$role->name}}</td>
+                            <td><a href="{{route('admin.roles.show',$role->id)}}">{{$role->name}}</a></td>
                             <td><a href="{{route('admin.roles.edit',$role->id)}}">Edit</a></td>
                         </tr>
                     @endforeach

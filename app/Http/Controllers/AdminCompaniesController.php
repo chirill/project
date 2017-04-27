@@ -58,6 +58,8 @@ class AdminCompaniesController extends Controller
     public function show($id)
     {
         //
+        $company = Company::findOrFail($id);
+        return view('admin.companies.show',compact('company'));
     }
 
     /**
@@ -69,6 +71,8 @@ class AdminCompaniesController extends Controller
     public function edit($id)
     {
         //
+        $company = Company::findOrFail($id);
+        return view('admin.companies.edit',compact('company'));
     }
 
     /**
@@ -81,6 +85,9 @@ class AdminCompaniesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $company = Company::findOrFail($id);
+
+
     }
 
     /**
@@ -92,5 +99,7 @@ class AdminCompaniesController extends Controller
     public function destroy($id)
     {
         //
+        Company::findOrFail($id)->delete();
+        return redirect('/admin/companies');
     }
 }

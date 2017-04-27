@@ -14,7 +14,6 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password','location_id','company_id','role_id','is_active',
     ];
-
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -32,9 +31,17 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo('App\Role');
     }
+    public function isAdmin(){
+        if ($this->role->name == 'administrator'){
+            return true;
+        }
+        return false;
+    }
 
-//    public function setPasswordAttribute('password'){
-//
-//
-//    }
+    public function setPasswordAttribute($password){
+        if(!empty($password)){
+            $this->attributes['password'] = bcrypt($password);
+        }
+        $this->attributes['password'] = $password;
+    }
 }

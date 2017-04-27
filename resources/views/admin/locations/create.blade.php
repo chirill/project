@@ -10,7 +10,7 @@
         </div>
         <div class="form-group">
             {!! Form::label('company_id','Name:') !!}
-            {!! Form::select('company_id',$companies,null,['class'=>'form-control']) !!}
+            {!! Form::select('company_id',$companies,1,['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::submit('Create Location',['class'=>'btn btn-primary']) !!}

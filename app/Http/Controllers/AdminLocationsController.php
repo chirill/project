@@ -57,6 +57,9 @@ class AdminLocationsController extends Controller
     public function show($id)
     {
         //
+        $location = Location::findOrFail($id);
+
+        return view('admin.locations.show',compact('location'));
     }
 
     /**
@@ -68,6 +71,9 @@ class AdminLocationsController extends Controller
     public function edit($id)
     {
         //
+        $location = Location::findOrFail($id);
+        $companies = Company::lists('name','id')->all();
+        return view('admin.locations.edit',compact('location','companies'));
     }
 
     /**
@@ -80,6 +86,11 @@ class AdminLocationsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $location = Location::findOrFail($id);
+        $location->update($request->all());
+
+        return redirect('/admin/locations');
+
     }
 
     /**
@@ -91,5 +102,12 @@ class AdminLocationsController extends Controller
     public function destroy($id)
     {
         //
+        $location = Location::findOrFail($id);
+        foreach ($location->users as $user) {
+            $user->location_id = 0;
+            $user->update();
+        }
+        $location->delete();
+        return redirect('/admin/locations');
     }
 }

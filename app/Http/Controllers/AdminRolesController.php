@@ -58,6 +58,8 @@ class AdminRolesController extends Controller
     public function show($id)
     {
         //
+        $role = Role::findOrFail($id);
+        return view('admin.roles.show',compact('role'));
     }
 
     /**

@@ -28,7 +28,7 @@
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
             <td>{{$user->company->name}}</td>
-            <td>{{$user->location->name}}</td>
+            <td>{{$user->location_id!=0? $user->location->name:"Location not defined"}}</td>
             <td>{{$user->role->name}}</td>
             <td>{{$user->is_active==1?'Active':'Not Active'}}</td>
             <td>{{$user->created_at->diffForHumans()}}</td>
